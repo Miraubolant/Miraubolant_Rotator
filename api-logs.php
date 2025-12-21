@@ -323,14 +323,29 @@ if ($format === 'logs') {
 // Calculer le timestamp de début selon la période
 $since = 0;
 switch ($period) {
+    case '1h':
+        $since = time() - (60 * 60);
+        break;
+    case '6h':
+        $since = time() - (6 * 60 * 60);
+        break;
     case '24h':
         $since = time() - (24 * 60 * 60);
+        break;
+    case '48h':
+        $since = time() - (48 * 60 * 60);
         break;
     case '7d':
         $since = time() - (7 * 24 * 60 * 60);
         break;
     case '30d':
         $since = time() - (30 * 24 * 60 * 60);
+        break;
+    case '90d':
+        $since = time() - (90 * 24 * 60 * 60);
+        break;
+    case '1y':
+        $since = time() - (365 * 24 * 60 * 60);
         break;
     case 'all':
     default:

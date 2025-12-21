@@ -71,9 +71,14 @@ function parseLogs(int $since = 0): array
 function getStats(string $period): array
 {
     $since = match ($period) {
-        '24h' => time() - (24 * 60 * 60),
-        '7d' => time() - (7 * 24 * 60 * 60),
-        '30d' => time() - (30 * 24 * 60 * 60),
+        '1h' => time() - 60 * 60,
+        '6h' => time() - 6 * 60 * 60,
+        '24h' => time() - 24 * 60 * 60,
+        '48h' => time() - 48 * 60 * 60,
+        '7d' => time() - 7 * 24 * 60 * 60,
+        '30d' => time() - 30 * 24 * 60 * 60,
+        '90d' => time() - 90 * 24 * 60 * 60,
+        '1y' => time() - 365 * 24 * 60 * 60,
         default => 0
     };
 
@@ -105,7 +110,7 @@ function getStats(string $period): array
 
 // Récupérer la période demandée
 $period = $_GET['period'] ?? '24h';
-$validPeriods = ['24h', '7d', '30d', 'all'];
+$validPeriods = ['1h', '6h', '24h', '48h', '7d', '30d', '90d', '1y', 'all'];
 if (!in_array($period, $validPeriods)) {
     $period = '24h';
 }
@@ -185,9 +190,14 @@ if (file_exists(URLS_FILE)) {
                 <a href="?period=<?= $p ?>"
                    class="px-3 py-1.5 text-sm rounded <?= $period === $p ? 'bg-accent text-white' : 'text-text-secondary hover:text-white' ?>">
                     <?= match($p) {
-                        '24h' => '24 heures',
-                        '7d' => '7 jours',
-                        '30d' => '30 jours',
+                        '1h' => '1h',
+                        '6h' => '6h',
+                        '24h' => '24h',
+                        '48h' => '48h',
+                        '7d' => '7j',
+                        '30d' => '30j',
+                        '90d' => '90j',
+                        '1y' => '1 an',
                         'all' => 'Tout'
                     } ?>
                 </a>
