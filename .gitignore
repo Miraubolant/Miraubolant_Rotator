@@ -1,0 +1,26 @@
+# Données et logs
+data/*
+!data/.gitkeep
+logs/*
+!logs/.gitkeep
+
+# Fichiers de configuration locaux
+.env
+.env.local
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Backups
+*.bak
+*.backup
+*.log.*.bak
